@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Проектная работа номер 4 в рамках обучения на платформе Яндекс.Практикум, направленная на закрепление навыков JavaScript"
+    />
+    <meta
+      name="keywords"
+      content="Место, Путешествия, галлерея, путешествия, фотографии"
+    />
+    <meta name="author" content="Лавров Василий Владиславович" />
+    <link rel="stylesheet" href="./pages/index.css" />
+    <title>Место</title>
+  </head>
+  <body class="page">
+    <header class="header">
+      <img
+        class="header__logo"
+        src="./images/logo-mesto.svg"
+        alt="Логотип место"
+      />
+      <hr class="header__line" />
+    </header>
+    <article class="popup popup_closed">
+      <div class="popup__container">
+        <h2 class="popup__title">Редактировать профиль</h2>
+        <form class="popup__form" action="#">
+          <input
+            class="popup__form-item"
+            type="text"
+            value="Жак-Ив Кусто"
+            placeholder="Имя и фамилия"
+          />
+          <input
+            class="popup__form-item"
+            type="text"
+            value="Исследователь океана"
+            placeholder="Деятельность"
+          />
+        </form>
+        <button class="popup__submit-button">Сохранить</button>
+        <button class="popup__close-button">
+          <img
+            class="popup__close-button-image"
+            src="./images/Close-Icon.svg"
+            alt="Кнопка крестик"
+          />
+        </button>
+      </div>
+    </article>
+    <main class="content">
+      <section class="profile">
+        <figure class="profile__container">
+          <img
+            class="profile__avatar"
+            src="./images/profile-avatar.png"
+            alt="Аватарка профиля пользователя"
+          />
+          <figcaption class="profile__info">
+            <div>
+              <h1 class="profile__title">Жак-Ив Кусто</h1>
+              <p class="profile__subtitle">Исследователь океана</p>
+            </div>
+            <button class="profile__edit-button">
+              <img
+                class="profile__edit-button-image"
+                src="./images/edit-button.svg"
+                alt="Кнопка изменить профиль"
+              />
+            </button>
+          </figcaption>
+        </figure>
+        <button class="profile__add-button">
+          <img
+            class="profile__add-button-image"
+            src="./images/add-button.svg"
+            alt="Кнопка плюс"
+          />
+        </button>
+      </section>
+      <section class="elements">
+        <article class="element">
+          <figure class="element__container">
+            <img
+              class="element__image"
+              src="./images/karachaevsk.jpg"
+              alt="Карачаевск, заброшенный храм, на заднем плане высокая гора"
+            />
+            <figcaption class="element__title">Карачаевск</figcaption>
+            <button class="element__like-button">
+              <img src="./images/like-button.svg" alt="сердце" />
+            </button>
+          </figure>
+        </article>
+        <article class="element">
+          <figure class="element__container">
+            <img
+              class="element__image"
+              src="./images/elbrus.jpg"
+              alt="Карачаевск, заброшенный храм, на заднем плане высокая гора"
+            />
+            <figcaption class="element__title">Гора Эльбрус</figcaption>
+            <button class="element__like-button">
+              <img src="./images/like-button.svg" alt="сердце" />
+            </button>
+          </figure>
+        </article>
+        <article class="element">
+          <figure class="element__container">
+            <img
+              class="element__image"
+              src="./images/dombai.jpg"
+              alt="Карачаевск, заброшенный храм, на заднем плане высокая гора"
+            />
+            <figcaption class="element__title">Домбай</figcaption>
+            <button class="element__like-button">
+              <img src="./images/like-button.svg" alt="сердце" />
+            </button>
+          </figure>
+        </article>
+        <article class="element">
+          <figure class="element__container">
+            <img
+              class="element__image"
+              src="./images/elbrus.jpg"
+              alt="Карачаевск, заброшенный храм, на заднем плане высокая гора"
+            />
+            <figcaption class="element__title">Гора Эльбрус</figcaption>
+            <button class="element__like-button">
+              <img src="./images/like-button.svg" alt="сердце" />
+            </button>
+          </figure>
+        </article>
+        <article class="element">
+          <figure class="element__container">
+            <img
+              class="element__image"
+              src="./images/dombai.jpg"
+              alt="Карачаевск, заброшенный храм, на заднем плане высокая гора"
+            />
+            <figcaption class="element__title">Домбай</figcaption>
+            <button class="element__like-button">
+              <img src="./images/like-button.svg" alt="сердце" />
+            </button>
+          </figure>
+        </article>
+        <article class="element">
+          <figure class="element__container">
+            <img
+              class="element__image"
+              src="./images/karachaevsk.jpg"
+              alt="Карачаевск, заброшенный храм, на заднем плане высокая гора"
+            />
+            <figcaption class="element__title">Карачаево-Черкесия</figcaption>
+            <button class="element__like-button">
+              <img src="./images/like-button.svg" alt="сердце" />
+            </button>
+          </figure>
+        </article>
+      </section>
+    </main>
+    <footer class="footer">
+      <p class="footer__copyright">© 2022 Mesto Russia</p>
+    </footer>
+  </body>
+</html>
