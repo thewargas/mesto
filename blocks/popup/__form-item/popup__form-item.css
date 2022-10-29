@@ -1,5 +1,5 @@
 .popup__form-item {
-  padding: 13px 10px;
+  padding: 11px 10px;
   width: calc(100% - 20px);
   height: 13px;
   background-color: transparent;
@@ -9,4 +9,9 @@
   font-size: 14px;
   font-weight: 400;
   line-height: 17px;
+}
+@media (max-width: 510px) {
+  .popup__form-item {
+    padding: 13px 10px;
+  }
 }

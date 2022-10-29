@@ -3,3 +3,8 @@
   display: flex;
   color: white;
 }
+@media (max-width: 768px) {
+  .profile__info {
+    margin-left: 0;
+  }
+}

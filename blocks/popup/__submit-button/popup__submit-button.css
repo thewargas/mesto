@@ -1,6 +1,7 @@
 .popup__submit-button {
+  margin-top: 34px;
   padding: 0;
-  width: calc(100% - 72px);
+  width: 100%;
   height: 50px;
   display: flex;
   align-items: center;
@@ -20,7 +21,8 @@
 }
 @media (max-width: 510px) {
   .popup__submit-button {
-    width: calc(100% - 44px);
+    margin-top: 28px;
+    width: 100%;
     height: 46px;
     font-size: 14px;
     line-height: 17px;

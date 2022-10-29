@@ -9,6 +9,7 @@
   right: 20px;
   transition: opacity 0.3s linear;
   cursor: pointer;
+  background-image: url(../../../images/like-button.svg);
 }
 .element__like-button:hover {
   opacity: 0.5;
