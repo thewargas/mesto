@@ -22,37 +22,7 @@
         src="./images/logo-mesto.svg"
         alt="Логотип место"
       />
-      <hr class="header__line" />
     </header>
-    <article class="popup popup_closed">
-      <div class="popup__container">
-        <h2 class="popup__title">Редактировать профиль</h2>
-        <form class="popup__form" action="#">
-          <input
-            class="popup__form-item"
-            type="text"
-            value="Жак-Ив Кусто"
-            id="nameinput"
-            placeholder="Имя и фамилия"
-          />
-          <input
-            class="popup__form-item"
-            type="text"
-            value="Исследователь океана"
-            id="jobinput"
-            placeholder="Деятельность"
-          />
-          <button type="submit" class="popup__submit-button">Сохранить</button>
-        </form>
-        <button class="popup__close-button">
-          <img
-            class="popup__close-button-image"
-            src="./images/Close-Icon.svg"
-            alt="Кнопка крестик"
-          />
-        </button>
-      </div>
-    </article>
     <main class="content">
       <section class="profile">
         <figure class="profile__container">
@@ -62,11 +32,11 @@
             alt="Аватарка профиля пользователя"
           />
           <figcaption class="profile__info">
-            <div>
+            <div class="profile__info-container">
               <h1 class="profile__title">Жак-Ив Кусто</h1>
               <p class="profile__subtitle">Исследователь океана</p>
             </div>
-            <button class="profile__edit-button">
+            <button type="button" class="button profile__edit-button">
               <img
                 class="profile__edit-button-image"
                 src="./images/edit-button.svg"
@@ -75,7 +45,7 @@
             </button>
           </figcaption>
         </figure>
-        <button class="profile__add-button">
+        <button type="button" class="button profile__add-button">
           <img
             class="profile__add-button-image"
             src="./images/add-button.svg"
@@ -88,12 +58,17 @@
           <figure class="element__container">
             <img
               class="element__image"
-              src="./images/karachaevsk.jpg"
+              src="./images/thumb_74608_cover_header.jpeg"
               alt="Карачаевск, заброшенный храм, на заднем плане высокая гора"
             />
-            <figcaption class="element__title">Карачаевск</figcaption>
+            <figcaption class="element__info">
+              <h2 class="element__title">Карачаевск</h2>
+              <button
+                type="button"
+                class="button element__like-button"
+              ></button>
+            </figcaption>
           </figure>
-          <button class="element__like-button"></button>
         </article>
         <article class="element">
           <figure class="element__container">
@@ -102,9 +77,14 @@
               src="./images/elbrus.jpg"
               alt="Пустынная местность, в дали горы"
             />
-            <figcaption class="element__title">Гора Эльбрус</figcaption>
+            <figcaption class="element__info">
+              <h2 class="element__title">Гора Эльбрус</h2>
+              <button
+                type="button"
+                class="button element__like-button"
+              ></button>
+            </figcaption>
           </figure>
-          <button class="element__like-button"></button>
         </article>
         <article class="element">
           <figure class="element__container">
@@ -113,9 +93,14 @@
               src="./images/dombai.jpg"
               alt="Высокая гора, на переднем плане лес на возвышенности"
             />
-            <figcaption class="element__title">Домбай</figcaption>
+            <figcaption class="element__info">
+              <h2 class="element__title">Домбай</h2>
+              <button
+                type="button"
+                class="button element__like-button"
+              ></button>
+            </figcaption>
           </figure>
-          <button class="element__like-button"></button>
         </article>
         <article class="element">
           <figure class="element__container">
@@ -124,9 +109,14 @@
               src="./images/elbrus.jpg"
               alt="Пустынная местность, в дали горы"
             />
-            <figcaption class="element__title">Гора Эльбрус</figcaption>
+            <figcaption class="element__info">
+              <h2 class="element__title">Гора Эльбрус</h2>
+              <button
+                type="button"
+                class="button element__like-button"
+              ></button>
+            </figcaption>
           </figure>
-          <button class="element__like-button"></button>
         </article>
         <article class="element">
           <figure class="element__container">
@@ -135,9 +125,14 @@
               src="./images/dombai.jpg"
               alt="Высокая гора, на переднем плане лес на возвышенности"
             />
-            <figcaption class="element__title">Домбай</figcaption>
+            <figcaption class="element__info">
+              <h2 class="element__title">Домбай</h2>
+              <button
+                type="button"
+                class="button element__like-button"
+              ></button>
+            </figcaption>
           </figure>
-          <button class="element__like-button"></button>
         </article>
         <article class="element">
           <figure class="element__container">
@@ -146,15 +141,51 @@
               src="./images/karachaevsk.jpg"
               alt="Карачаевск, заброшенный храм, на заднем плане высокая гора"
             />
-            <figcaption class="element__title">Карачаево-Черкесия</figcaption>
+            <figcaption class="element__info">
+              <h2 class="element__title">Карачаево-Черкесия</h2>
+              <button
+                type="button"
+                class="button element__like-button"
+              ></button>
+            </figcaption>
           </figure>
-          <button class="element__like-button"></button>
         </article>
       </section>
     </main>
     <footer class="footer">
       <p class="footer__copyright">© 2022 Mesto Russia</p>
     </footer>
+    <div class="popup popup_closed">
+      <div class="popup__container">
+        <h2 class="popup__title">Редактировать профиль</h2>
+        <form class="popup__form" action="#" name="popup-form">
+          <input
+            class="popup__input popup__input_type_name"
+            type="text"
+            placeholder="Имя и фамилия"
+            name="name"
+            required
+          />
+          <input
+            class="popup__input popup__input_type_job"
+            type="text"
+            placeholder="Деятельность"
+            name="job"
+            required
+          />
+          <button type="submit" class="button popup__submit-button">
+            Сохранить
+          </button>
+        </form>
+        <button type="button" class="button popup__close-button">
+          <img
+            class="popup__close-button-image"
+            src="./images/Close-Icon.svg"
+            alt="Кнопка крестик"
+          />
+        </button>
+      </div>
+    </div>
     <script src="./scripts/index.js"></script>
   </body>
 </html>

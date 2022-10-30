@@ -1,13 +1,12 @@
 .profile {
   margin-bottom: 50px;
   width: 100%;
-  min-height: 120px;
   display: flex;
   justify-content: space-between;
 }
-@media (max-width: 880px) {
+@media (max-width: 918px) {
   .profile {
-    width: calc(100% - 54px);
+    width: calc(100vw - 38px);
   }
 }
 @media (max-width: 768px) {
