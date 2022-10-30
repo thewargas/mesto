@@ -2,7 +2,7 @@
   width: calc(100% - 72px);
   display: flex;
   flex-direction: column;
-  gap: 17px;
+  gap: 19px;
 }
 @media (max-width: 510px) {
   .popup__form {
