@@ -11,8 +11,3 @@
   line-height: 17px;
   padding: 12px 0;
 }
-@media (max-width: 510px) {
-  .popup__input {
-    padding: 12px 0;
-  }
-}
