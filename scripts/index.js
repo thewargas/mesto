@@ -109,6 +109,7 @@ const generateCard = (dataCard) => {
 
   const cardImage = newCard.querySelector(`.element__image`);
   cardImage.src = dataCard.link;
+  cardImage.alt = `Место: ` + dataCard.name;
 
   const likeButton = newCard.querySelector(`.element__like-button`);
   likeButton.addEventListener(`click`, function () {
@@ -119,6 +120,7 @@ const generateCard = (dataCard) => {
 
     titleOutput.textContent = dataCard.name;
     urlOutput.src = dataCard.link;
+    urlOutput.alt = `Место: ` + dataCard.name;
 
     popupOpen(popupImage);
   });
