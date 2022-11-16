@@ -53,112 +53,15 @@
           />
         </button>
       </section>
-      <section class="elements">
-        <article class="element">
-          <figure class="element__container">
-            <img
-              class="element__image"
-              src="./images/karachaevsk.jpg"
-              alt="Карачаевск, заброшенный храм, на заднем плане высокая гора"
-            />
-            <figcaption class="element__info">
-              <h2 class="element__title">Карачаевск</h2>
-              <button
-                type="button"
-                class="button element__like-button"
-              ></button>
-            </figcaption>
-          </figure>
-        </article>
-        <article class="element">
-          <figure class="element__container">
-            <img
-              class="element__image"
-              src="./images/elbrus.jpg"
-              alt="Пустынная местность, в дали горы"
-            />
-            <figcaption class="element__info">
-              <h2 class="element__title">Гора Эльбрус</h2>
-              <button
-                type="button"
-                class="button element__like-button"
-              ></button>
-            </figcaption>
-          </figure>
-        </article>
-        <article class="element">
-          <figure class="element__container">
-            <img
-              class="element__image"
-              src="./images/dombai.jpg"
-              alt="Высокая гора, на переднем плане лес на возвышенности"
-            />
-            <figcaption class="element__info">
-              <h2 class="element__title">Домбай</h2>
-              <button
-                type="button"
-                class="button element__like-button"
-              ></button>
-            </figcaption>
-          </figure>
-        </article>
-        <article class="element">
-          <figure class="element__container">
-            <img
-              class="element__image"
-              src="./images/elbrus.jpg"
-              alt="Пустынная местность, в дали горы"
-            />
-            <figcaption class="element__info">
-              <h2 class="element__title">Гора Эльбрус</h2>
-              <button
-                type="button"
-                class="button element__like-button"
-              ></button>
-            </figcaption>
-          </figure>
-        </article>
-        <article class="element">
-          <figure class="element__container">
-            <img
-              class="element__image"
-              src="./images/dombai.jpg"
-              alt="Высокая гора, на переднем плане лес на возвышенности"
-            />
-            <figcaption class="element__info">
-              <h2 class="element__title">Домбай</h2>
-              <button
-                type="button"
-                class="button element__like-button"
-              ></button>
-            </figcaption>
-          </figure>
-        </article>
-        <article class="element">
-          <figure class="element__container">
-            <img
-              class="element__image"
-              src="./images/karachaevsk.jpg"
-              alt="Карачаевск, заброшенный храм, на заднем плане высокая гора"
-            />
-            <figcaption class="element__info">
-              <h2 class="element__title">Карачаево-Черкесия</h2>
-              <button
-                type="button"
-                class="button element__like-button"
-              ></button>
-            </figcaption>
-          </figure>
-        </article>
-      </section>
+      <section class="elements"></section>
     </main>
     <footer class="footer">
       <p class="footer__copyright">© 2022 Mesto Russia</p>
     </footer>
-    <div class="popup popup_closed">
+    <div class="popup popup_type_profile">
       <div class="popup__container">
         <h2 class="popup__title">Редактировать профиль</h2>
-        <form class="popup__form" action="#" name="popup-form">
+        <form class="popup__form popup__form_type_profile" action="#" name="popup-form-profile">
           <input
             class="popup__input popup__input_type_name"
             type="text"
@@ -186,6 +89,64 @@
         </button>
       </div>
     </div>
+    <div class="popup popup_type_card">
+      <div class="popup__container">
+        <h2 class="popup__title">Новое место</h2>
+        <form class="popup__form popup__form_type_card" action="#" name="popup-form-card">
+          <input
+            class="popup__input popup__input_type_title"
+            type="text"
+            placeholder="Название"
+            name="title"
+            required
+          />
+          <input
+            class="popup__input popup__input_type_url"
+            type="url"
+            placeholder="Ссылка на картинку"
+            name="url"
+            required
+          />
+          <button type="submit" class="button popup__submit-button">
+            Создать
+          </button>
+        </form>
+        <button type="button" class="button popup__close-button">
+          <img
+            class="popup__close-button-image"
+            src="./images/Close-Icon.svg"
+            alt="Кнопка крестик"
+          />
+        </button>
+      </div>
+    </div>
+    <div class="popup popup_type_image">
+      <figure class="popup__image-container">
+        <img class="popup__image" src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg" alt="Архыз">
+        <figcaption>
+          <h2 class="popup__image-title">Архыз</h2>
+          <button type="button" class="button popup__close-button">
+            <img
+              class="popup__close-button-image"
+              src="./images/Close-Icon.svg"
+              alt="Кнопка крестик"
+            />
+          </button>
+        </figcaption>
+      </figure>
+    </div>
+    <template id="card">
+      <article class="element">
+        <figure class="element__container">
+          <img class="element__image" />
+          <figcaption class="element__info">
+            <h2 class="element__title"></h2>
+            <button type="button" class="button element__like-button"></button>
+            <button type="button" class="button element__trash-button"></button>
+          </figcaption>
+        </figure>
+      </article>
+    </template>
     <script src="./scripts/index.js"></script>
   </body>
 </html>

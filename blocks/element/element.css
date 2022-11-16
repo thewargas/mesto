@@ -5,4 +5,10 @@
   border-radius: 10px;
   position: relative;
   overflow: hidden;
+  cursor: pointer;
+  transition: scale 0.2s linear;
+}
+
+.element:hover {
+  scale: 1.04;
 }
