@@ -79,13 +79,15 @@ const urlInput = document.querySelector(`.popup__input_type_url`);
 const titleOutput = document.querySelector(`.popup__image-title`);
 const urlOutput = document.querySelector(`.popup__image`);
 
-// 
+// Общая переменная попапов
 
 const popups = document.querySelectorAll(`.popup`);
 
-//
+// Переменные конопок закрытия попапов
 
-const closeButtons = document.querySelectorAll(`.popup__close-button`);
+const closeButtonProfile = document.querySelector(`.popup__close-button_type_profile`);
+const closeButtonCard = document.querySelector(`.popup__close-button_type_card`);
+const closeButtonImage = document.querySelector(`.popup__close-button_type_image`);
 
 //
 
@@ -157,10 +159,8 @@ function openPopup(popup) {
   popup.classList.add(`popup_active`);
 }
 
-function closePopup() {
-  popups.forEach((enterPopup) => {
-    enterPopup.classList.remove(`popup_active`);
-  });
+function closePopup(event) {
+  event.classList.remove(`popup_active`);
 }
 
 // Подтверждения попапа профиля
@@ -170,7 +170,7 @@ function handleFormProfileSubmit(evt) {
   nameTitle.textContent = nameInput.value;
   jobTitle.textContent = jobInput.value;
 
-  closePopup(evt);
+  closePopup(popupProfile);
 }
 
 function handleFormCardSubmit(evt) {
@@ -179,7 +179,7 @@ function handleFormCardSubmit(evt) {
 
   popupFormCard.reset();
 
-  closePopup(evt);
+  closePopup(popupCard);
 }
 
 // Вывешивание слушателей
@@ -187,25 +187,28 @@ function handleFormCardSubmit(evt) {
 popupFormProfile.addEventListener(`submit`, handleFormProfileSubmit);
 popupFormCard.addEventListener(`submit`, handleFormCardSubmit);
 
+closeButtonProfile.addEventListener(`click`, () => {
+  closePopup(popupProfile);
+});
+closeButtonCard.addEventListener(`click`, () => {
+  closePopup(popupCard);
+});
+closeButtonImage.addEventListener(`click`, () => {
+  closePopup(popupImage);
+});
+
 addButton.addEventListener(`click`, () => {
   openPopup(popupCard);
 });
-for (let i = 0; i < closeButtons.length; i++) {
-  closeButtons[i].addEventListener(`click`, closePopup);
-}
+
 popups.forEach((enterPopup) => {
   enterPopup.addEventListener(`click`, (event) => {
     if (event.target.classList.contains("popup_active")) {
-      closePopup();
+      closePopup(enterPopup);
     }
   });
 });
-document.addEventListener('keydown', function(event) {
-  const key = event.key;
-  if (key === "Escape") {
-    closePopup();
-  }
-});
+
 editButton.addEventListener(`click`, () => {
   nameInput.value = nameTitle.textContent;
   jobInput.value = jobTitle.textContent;
