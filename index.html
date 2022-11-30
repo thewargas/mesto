@@ -61,26 +61,36 @@
     <div class="popup popup_type_profile">
       <div class="popup__container">
         <h2 class="popup__title">Редактировать профиль</h2>
-        <form class="popup__form popup__form_type_profile" action="#" name="popup-form-profile">
-          <input
-            class="popup__input popup__input_type_name"
-            type="text"
-            placeholder="Имя и фамилия"
-            name="name"
-            required
-          />
-          <input
-            class="popup__input popup__input_type_job"
-            type="text"
-            placeholder="Деятельность"
-            name="job"
-            required
-          />
+        <form
+          class="popup__form popup__form_type_profile"
+          action="#"
+          name="popup-form-profile"
+          novalidate
+        >
+          <div class="popup__inputs">
+            <input
+              class="popup__input popup__input_type_name"
+              type="text"
+              placeholder="Имя и фамилия"
+              name="name"
+              required
+            />
+            <input
+              class="popup__input popup__input_type_job"
+              type="text"
+              placeholder="Деятельность"
+              name="job"
+              required
+            />
+          </div>
           <button type="submit" class="button popup__submit-button">
             Сохранить
           </button>
         </form>
-        <button type="button" class="button popup__close-button popup__close-button_type_profile">
+        <button
+          type="button"
+          class="button popup__close-button popup__close-button_type_profile"
+        >
           <img
             class="popup__close-button-image"
             src="./images/Close-Icon.svg"
@@ -92,26 +102,37 @@
     <div class="popup popup_type_card">
       <div class="popup__container">
         <h2 class="popup__title">Новое место</h2>
-        <form class="popup__form popup__form_type_card" action="#" name="popup-form-card">
-          <input
-            class="popup__input popup__input_type_title"
-            type="text"
-            placeholder="Название"
-            name="title"
-            required
-          />
-          <input
-            class="popup__input popup__input_type_url"
-            type="url"
-            placeholder="Ссылка на картинку"
-            name="url"
-            required
-          />
-          <button type="submit" class="button popup__submit-button">
+        <form
+          class="popup__form popup__form_type_card"
+          action="#"
+          name="popup-form-card"
+          novalidate
+        >
+          <div class="popup__inputs">
+            <input
+              class="popup__input popup__input_type_title"
+              type="text"
+              placeholder="Название"
+              name="title"
+            />
+            <input
+              class="popup__input popup__input_type_url"
+              type="url"
+              placeholder="Ссылка на картинку"
+              name="url"
+            />
+          </div>
+          <button
+            type="submit"
+            class="button popup__submit-button button_disabled"
+          >
             Создать
           </button>
         </form>
-        <button type="button" class="button popup__close-button popup__close-button_type_card">
+        <button
+          type="button"
+          class="button popup__close-button popup__close-button_type_card"
+        >
           <img
             class="popup__close-button-image"
             src="./images/Close-Icon.svg"
@@ -122,10 +143,17 @@
     </div>
     <div class="popup popup_type_image">
       <figure class="popup__image-container">
-        <img class="popup__image" src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg" alt="Архыз">
+        <img
+          class="popup__image"
+          src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg"
+          alt="Архыз"
+        />
         <figcaption>
           <h2 class="popup__image-title">Архыз</h2>
-          <button type="button" class="button popup__close-button popup__close-button_type_image">
+          <button
+            type="button"
+            class="button popup__close-button popup__close-button_type_image"
+          >
             <img
               class="popup__close-button-image"
               src="./images/Close-Icon.svg"

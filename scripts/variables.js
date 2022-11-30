@@ -24,7 +24,7 @@ let initialCards = [
     link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
   },
   {
-    name: "Великий Новогород",
+    name: "Великий Новгород",
     link: "https://images.unsplash.com/photo-1600253613497-8a39b8b4a5de?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=928&q=80",
   },
   {
@@ -80,9 +80,15 @@ const popups = document.querySelectorAll(`.popup`);
 
 // Переменные конопок закрытия попапов
 
-const closeButtonProfile = document.querySelector(`.popup__close-button_type_profile`);
-const closeButtonCard = document.querySelector(`.popup__close-button_type_card`);
-const closeButtonImage = document.querySelector(`.popup__close-button_type_image`);
+const closeButtonProfile = document.querySelector(
+  `.popup__close-button_type_profile`
+);
+const closeButtonCard = document.querySelector(
+  `.popup__close-button_type_card`
+);
+const closeButtonImage = document.querySelector(
+  `.popup__close-button_type_image`
+);
 
 //
 
@@ -93,7 +99,10 @@ const popupFormCard = document.querySelector(`.popup__form_type_card`);
 
 const cardsContainer = document.querySelector(`.elements`);
 
-
 // Шаблон
 
-const cardTemplate = document.querySelector(`#card`).content.querySelector(`.element`);
+const cardTemplate = document
+  .querySelector(`#card`)
+  .content.querySelector(`.element`);
+
+//
