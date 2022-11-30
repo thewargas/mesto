@@ -105,4 +105,6 @@ const cardTemplate = document
   .querySelector(`#card`)
   .content.querySelector(`.element`);
 
-//
+// Формы
+
+const forms = document.querySelectorAll(".popup__form");

@@ -1,3 +1,10 @@
+const FormValidators = {
+  name: validateName,
+  job: validateJob,
+  title: validateTitle,
+  url: validateUrl,
+};
+
 // Событие удаления карточки
 
 const handleDeleteCard = (event) => {
@@ -105,63 +112,8 @@ function handleFormCardSubmit(evt) {
   closePopup(popupCard);
 }
 
-// Вывешивание слушателей
+// Формы
 
-closeButtonProfile.addEventListener(`click`, () => {
-  closePopup(popupProfile);
-});
-closeButtonCard.addEventListener(`click`, () => {
-  closePopup(popupCard);
-});
-closeButtonImage.addEventListener(`click`, () => {
-  closePopup(popupImage);
-});
-
-addButton.addEventListener(`click`, () => {
-  openPopup(popupCard);
-});
-
-popups.forEach((enterPopup) => {
-  enterPopup.addEventListener(`click`, (event) => {
-    if (event.target.classList.contains("popup_active")) {
-      closePopup(enterPopup);
-    }
-  });
-});
-
-editButton.addEventListener(`click`, () => {
-  nameInput.value = nameTitle.textContent;
-  jobInput.value = jobTitle.textContent;
-  openPopup(popupProfile);
-});
-
-// Воспроизведение с загрузкой страницы.
-// Пересортировка массива в случайном порядке и уменьшение до 6 мест
-
-initialCards.sort(() => 0.5 - Math.random());
-initialCards = initialCards.slice(0, 6);
-
-// Рендер для всех карточек
-
-initialCards.forEach((dataCard) => {
-  renderCard(dataCard);
-});
-
-// Валидация форм
-
-const forms = document.querySelectorAll(".popup__form");
-const FormValidators = {
-  name: validateName,
-  job: validateJob,
-  title: validateTitle,
-  url: validateUrl,
-};
-
-forms.forEach((enterForm) => {
-  enableValidation(enterForm, FormValidators);
-});
-
-/*-----------------------FUNCTIONS-----------------------*/
 function enableValidation(form, validators) {
   const inputsContainer = form.querySelector(".popup__inputs");
   let buttonDisabled = form.querySelector(`.popup__submit-button`);
@@ -271,7 +223,7 @@ function enableValidation(form, validators) {
       return;
     }
 
-    // успешно введная форма
+    // успешно введена форма
     if (e.target.classList.contains("popup__form_type_profile")) {
       handleFormProfileSubmit(e);
     }
@@ -282,7 +234,8 @@ function enableValidation(form, validators) {
   });
 }
 
-/*-----------------------VALIDATORS-----------------------*/
+// Валидаторы
+
 function validateName(value) {
   if (!value) {
     return "Вы пропустили это поле.";
@@ -351,3 +304,51 @@ function validateUrl(value) {
 
   return null;
 }
+
+// Вывешивание слушателей
+
+closeButtonProfile.addEventListener(`click`, () => {
+  closePopup(popupProfile);
+});
+closeButtonCard.addEventListener(`click`, () => {
+  closePopup(popupCard);
+});
+closeButtonImage.addEventListener(`click`, () => {
+  closePopup(popupImage);
+});
+
+addButton.addEventListener(`click`, () => {
+  openPopup(popupCard);
+});
+
+popups.forEach((enterPopup) => {
+  enterPopup.addEventListener(`click`, (event) => {
+    if (event.target.classList.contains("popup_active")) {
+      closePopup(enterPopup);
+    }
+  });
+});
+
+editButton.addEventListener(`click`, () => {
+  nameInput.value = nameTitle.textContent;
+  jobInput.value = jobTitle.textContent;
+  openPopup(popupProfile);
+});
+
+// Воспроизведение с загрузкой страницы.
+// Пересортировка массива в случайном порядке и уменьшение до 6 мест
+
+initialCards.sort(() => 0.5 - Math.random());
+initialCards = initialCards.slice(0, 6);
+
+// Рендер для всех карточек
+
+initialCards.forEach((dataCard) => {
+  renderCard(dataCard);
+});
+
+// Валидация форм
+
+forms.forEach((enterForm) => {
+  enableValidation(enterForm, FormValidators);
+});
