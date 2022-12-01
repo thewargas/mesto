@@ -69,19 +69,27 @@
         >
           <div class="popup__inputs">
             <input
+              id="name-input"
               class="popup__input popup__input_type_name"
               type="text"
               placeholder="Имя и фамилия"
               name="name"
+              minlength="2"
+              maxlength="40"
               required
             />
+            <span class="popup__input-error name-input-error"></span>
             <input
+              id="job-input"
               class="popup__input popup__input_type_job"
               type="text"
               placeholder="Деятельность"
               name="job"
+              minlength="2"
+              maxlength="200"
               required
             />
+            <span class="popup__input-error job-input-error"></span>
           </div>
           <button type="submit" class="button popup__submit-button">
             Сохранить
@@ -110,21 +118,30 @@
         >
           <div class="popup__inputs">
             <input
+              id="title-input"
               class="popup__input popup__input_type_title"
               type="text"
               placeholder="Название"
               name="title"
+              minlength="2"
+              maxlength="30"
+              required
             />
+            <span class="popup__input-error title-input-error"></span>
             <input
+              id="url-input"
               class="popup__input popup__input_type_url"
               type="url"
               placeholder="Ссылка на картинку"
               name="url"
+              required
             />
+            <span class="popup__input-error url-input-error"></span>
           </div>
           <button
             type="submit"
             class="button popup__submit-button button_disabled"
+            disabled
           >
             Создать
           </button>
@@ -177,5 +194,6 @@
     </template>
     <script src="./scripts/variables.js"></script>
     <script src="./scripts/index.js"></script>
+    <script src="./scripts/validate.js"></script>
   </body>
 </html>
