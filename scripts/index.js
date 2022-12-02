@@ -76,7 +76,8 @@ function closePopup(event) {
 
 // Подтверждения попапа профиля
 
-function handleFormProfileSubmit() {
+function handleFormProfileSubmit(evt) {
+  evt.preventDefault();
   nameTitle.textContent = nameInput.value;
   jobTitle.textContent = jobInput.value;
 
@@ -93,32 +94,33 @@ function handleFormCardSubmit() {
 
 // Вывешивание слушателей
 
-closeButtonProfile.addEventListener(`click`, () => {
-  closePopup(popupProfile);
-});
-closeButtonCard.addEventListener(`click`, () => {
-  closePopup(popupCard);
-});
-closeButtonImage.addEventListener(`click`, () => {
-  closePopup(popupImage);
-});
-
-addButton.addEventListener(`click`, () => {
+buttonAdd.addEventListener(`click`, () => {
   openPopup(popupCard);
 });
 
 popups.forEach((enterPopup) => {
   enterPopup.addEventListener(`click`, (event) => {
-    if (event.target.classList.contains("popup_active")) {
+    if (
+      event.target.classList.contains("popup_active") ||
+      event.target.classList.contains("popup__close-button-image")
+    ) {
       closePopup(enterPopup);
     }
   });
 });
 
-editButton.addEventListener(`click`, () => {
+buttonEdit.addEventListener(`click`, () => {
   nameInput.value = nameTitle.textContent;
   jobInput.value = jobTitle.textContent;
   openPopup(popupProfile);
+});
+
+popupFormProfile.addEventListener(`submit`, handleFormProfileSubmit);
+
+popupFormCard.addEventListener(`submit`, (evt) => {
+  evt.preventDefault();
+  handleFormCardSubmit();
+  toggleButtonState(true, evt.target, configValidation);
 });
 
 // Воспроизведение с загрузкой страницы.

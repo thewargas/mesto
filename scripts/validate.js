@@ -4,22 +4,6 @@ const enableValidation = (enterOptions) => {
     document.querySelectorAll(validationOptions.formSelector)
   );
   formList.forEach((formElement) => {
-    formElement.addEventListener("submit", function (evt) {
-      evt.preventDefault();
-
-      if (formElement.classList.contains("popup__form_type_profile")) {
-        handleFormProfileSubmit(formElement);
-      }
-      if (formElement.classList.contains("popup__form_type_card")) {
-        handleFormCardSubmit(formElement);
-        const buttonElement = formElement.querySelector(
-          validationOptions.submitButtonSelector
-        );
-        buttonElement.classList.add(validationOptions.inactiveButtonClass);
-        buttonElement.disabled = true;
-      }
-    });
-
     setEventListeners(formElement);
   });
 
@@ -27,25 +11,12 @@ const enableValidation = (enterOptions) => {
     const inputList = Array.from(
       form.querySelectorAll(validationOptions.inputSelector)
     );
-    const buttonElement = form.querySelector(
-      validationOptions.submitButtonSelector
-    );
     inputList.forEach((inputElement) => {
       inputElement.addEventListener("input", function () {
         checkInputValidity(form, inputElement);
-        toggleButtonState(inputList, buttonElement);
+        toggleButtonState(hasInvalidInput(inputList), form, validationOptions);
       });
     });
-  }
-
-  function toggleButtonState(inputList, buttonElement) {
-    if (hasInvalidInput(inputList)) {
-      buttonElement.classList.add(validationOptions.inactiveButtonClass);
-      buttonElement.disabled = true;
-    } else {
-      buttonElement.classList.remove(validationOptions.inactiveButtonClass);
-      buttonElement.disabled = false;
-    }
   }
 
   function hasInvalidInput(inputList) {
@@ -91,17 +62,22 @@ function clearErrors(enterPopup) {
   });
 
   if (enterPopup.classList.contains("popup_type_profile")) {
-    const buttonElement = enterPopup.querySelector(".popup__submit-button");
-    buttonElement.classList.remove("button_disabled");
-    buttonElement.disabled = false;
+    toggleButtonState(false, enterPopup, configValidation);
   }
 }
 
-enableValidation({
-  formSelector: ".popup__form",
-  inputSelector: ".popup__input",
-  submitButtonSelector: ".popup__submit-button",
-  inactiveButtonClass: "button_disabled",
-  inputErrorClass: "popup__input_type_error",
-  errorClass: "popup__input-error_active",
-});
+// переключатель кнопки submit
+
+function toggleButtonState(bool, key, validationOptions) {
+  const buttonElement = key.querySelector(
+    validationOptions.submitButtonSelector
+  );
+  if (bool) {
+    buttonElement.classList.add(validationOptions.inactiveButtonClass);
+  } else {
+    buttonElement.classList.remove(validationOptions.inactiveButtonClass);
+  }
+  buttonElement.disabled = bool;
+}
+
+enableValidation(configValidation);

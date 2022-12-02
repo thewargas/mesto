@@ -49,11 +49,22 @@ let initialCards = [
   },
 ];
 
+// Конфиг валмдатора
+
+configValidation = {
+  formSelector: ".popup__form",
+  inputSelector: ".popup__input",
+  submitButtonSelector: ".popup__submit-button",
+  inactiveButtonClass: "button_disabled",
+  inputErrorClass: "popup__input_type_error",
+  errorClass: "popup__input-error_active",
+};
+
 // Объявление переменных
 
-const editButton = document.querySelector(`.profile__edit-button`);
+const buttonEdit = document.querySelector(`.profile__edit-button`);
 const popupProfile = document.querySelector(`.popup_type_profile`);
-const addButton = document.querySelector(`.profile__add-button`);
+const buttonAdd = document.querySelector(`.profile__add-button`);
 const popupCard = document.querySelector(`.popup_type_card`);
 
 const popupImage = document.querySelector(`.popup_type_image`);
@@ -77,18 +88,6 @@ const urlOutput = document.querySelector(`.popup__image`);
 // Общая переменная попапов
 
 const popups = document.querySelectorAll(`.popup`);
-
-// Переменные конопок закрытия попапов
-
-const closeButtonProfile = document.querySelector(
-  `.popup__close-button_type_profile`
-);
-const closeButtonCard = document.querySelector(
-  `.popup__close-button_type_card`
-);
-const closeButtonImage = document.querySelector(
-  `.popup__close-button_type_image`
-);
 
 //
 
