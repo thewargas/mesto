@@ -106,12 +106,12 @@ popupFormCard.addEventListener(`submit`, (evt) => {
 // Воспроизведение с загрузкой страницы.
 // Пересортировка массива в случайном порядке и уменьшение до 6 мест
 
-initialCards.sort(() => 0.5 - Math.random());
-initialCards = initialCards.slice(0, 6);
+let initialSortedCards = initialCards.sort(() => 0.5 - Math.random());
+initialSortedCards = initialSortedCards.slice(0, 6);
 
 // Рендер для всех карточек
 
-initialCards.forEach((dataCard) => {
+initialSortedCards.forEach((dataCard) => {
   renderCard(dataCard);
 });
 
