@@ -1,56 +1,31 @@
-// Событие удаления карточки
-
-const handleDeleteCard = (event) => {
-  event.target.closest(`.element`).remove();
-};
-
-// Событие переключения лайка
-
-const handleSwitchLike = (event) => {
-  event.classList.toggle(`element__like-button_active`);
-};
-
-// Событие перед открытием попапа
-
-const handleOpenImage = (event) => {
-  titleOutput.textContent = event.name;
-  urlOutput.src = event.link;
-  urlOutput.alt = `Место: ` + event.name;
-
-  openPopup(popupImage);
-};
-
-// Генерация карточки
-
-const generateCard = (dataCard) => {
-  const newCard = cardTemplate.cloneNode(true);
-
-  const title = newCard.querySelector(`.element__title`);
-  title.textContent = dataCard.name;
-
-  const cardImage = newCard.querySelector(`.element__image`);
-  cardImage.src = dataCard.link;
-  cardImage.alt = `Место: ` + dataCard.name;
-
-  const likeButton = newCard.querySelector(`.element__like-button`);
-  likeButton.addEventListener(`click`, () => {
-    handleSwitchLike(likeButton);
-  });
-
-  cardImage.addEventListener(`click`, () => {
-    handleOpenImage(dataCard);
-  });
-
-  const trashButton = newCard.querySelector(`.element__trash-button`);
-  trashButton.addEventListener(`click`, handleDeleteCard);
-
-  return newCard;
-};
+import Card from "./Card.js";
+import FormValidator from "./FormValidator.js";
+import {
+  initialCards,
+  configValidation,
+  buttonEdit,
+  popupProfile,
+  buttonAdd,
+  popupCard,
+  nameInput,
+  jobInput,
+  nameTitle,
+  jobTitle,
+  titleInput,
+  urlInput,
+  popups,
+  popupFormProfile,
+  popupFormCard,
+  cardsContainer,
+  formProfile,
+  formCard,
+} from "./variables.js";
 
 // Добавление карточки
 
 const renderCard = (dataCard) => {
-  cardsContainer.prepend(generateCard(dataCard));
+  const card = new Card(dataCard);
+  cardsContainer.prepend(card.getView());
 };
 
 // Событие нажатия кнопки ESC
@@ -63,7 +38,7 @@ function handleCloseByEsc(event) {
 
 // Открытия и закрытия попапов
 
-function openPopup(popup) {
+export function openPopup(popup) {
   popup.classList.add(`popup_active`);
   document.addEventListener("keydown", handleCloseByEsc);
 }
@@ -71,7 +46,10 @@ function openPopup(popup) {
 function closePopup(event) {
   event.classList.remove(`popup_active`);
   document.removeEventListener("keydown", handleCloseByEsc);
-  clearErrors(event);
+
+  if (event.classList.contains("popup_type_card")) {
+    cardFormValidation.clearErrors();
+  }
 }
 
 // Подтверждения попапа профиля
@@ -112,6 +90,9 @@ popups.forEach((enterPopup) => {
 buttonEdit.addEventListener(`click`, () => {
   nameInput.value = nameTitle.textContent;
   jobInput.value = jobTitle.textContent;
+
+  profileFormValidation.clearErrors();
+
   openPopup(popupProfile);
 });
 
@@ -120,7 +101,6 @@ popupFormProfile.addEventListener(`submit`, handleFormProfileSubmit);
 popupFormCard.addEventListener(`submit`, (evt) => {
   evt.preventDefault();
   handleFormCardSubmit();
-  toggleButtonState(true, evt.target, configValidation);
 });
 
 // Воспроизведение с загрузкой страницы.
@@ -134,3 +114,11 @@ initialCards = initialCards.slice(0, 6);
 initialCards.forEach((dataCard) => {
   renderCard(dataCard);
 });
+
+// Включение валидации для формы профиля
+const profileFormValidation = new FormValidator(configValidation, formProfile);
+profileFormValidation.enableValidation();
+
+// Включение валидации для формы добавления карточки
+const cardFormValidation = new FormValidator(configValidation, formCard);
+cardFormValidation.enableValidation();

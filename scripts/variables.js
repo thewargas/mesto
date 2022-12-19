@@ -1,4 +1,4 @@
-let initialCards = [
+export let initialCards = [
   {
     name: "Архыз",
     link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
@@ -49,9 +49,9 @@ let initialCards = [
   },
 ];
 
-// Конфиг валмдатора
+// Конфиг валидатора
 
-configValidation = {
+export const configValidation = {
   formSelector: ".popup__form",
   inputSelector: ".popup__input",
   submitButtonSelector: ".popup__submit-button",
@@ -62,44 +62,42 @@ configValidation = {
 
 // Объявление переменных
 
-const buttonEdit = document.querySelector(`.profile__edit-button`);
-const popupProfile = document.querySelector(`.popup_type_profile`);
-const buttonAdd = document.querySelector(`.profile__add-button`);
-const popupCard = document.querySelector(`.popup_type_card`);
+export const buttonEdit = document.querySelector(`.profile__edit-button`);
+export const popupProfile = document.querySelector(`.popup_type_profile`);
+export const buttonAdd = document.querySelector(`.profile__add-button`);
+export const popupCard = document.querySelector(`.popup_type_card`);
 
-const popupImage = document.querySelector(`.popup_type_image`);
+export const popupImage = document.querySelector(`.popup_type_image`);
 
 // переменные для попапа профиля
 
-const nameInput = document.querySelector(`.popup__input_type_name`);
-const jobInput = document.querySelector(`.popup__input_type_job`);
+export const nameInput = document.querySelector(`.popup__input_type_name`);
+export const jobInput = document.querySelector(`.popup__input_type_job`);
 
-const nameTitle = document.querySelector(`.profile__title`);
-const jobTitle = document.querySelector(`.profile__subtitle`);
+export const nameTitle = document.querySelector(`.profile__title`);
+export const jobTitle = document.querySelector(`.profile__subtitle`);
 
 // переменные для попапа создания карточек
 
-const titleInput = document.querySelector(`.popup__input_type_title`);
-const urlInput = document.querySelector(`.popup__input_type_url`);
-
-const titleOutput = document.querySelector(`.popup__image-title`);
-const urlOutput = document.querySelector(`.popup__image`);
+export const titleInput = document.querySelector(`.popup__input_type_title`);
+export const urlInput = document.querySelector(`.popup__input_type_url`);
 
 // Общая переменная попапов
 
-const popups = document.querySelectorAll(`.popup`);
+export const popups = document.querySelectorAll(`.popup`);
 
 //
 
-const popupFormProfile = document.querySelector(`.popup__form_type_profile`);
-const popupFormCard = document.querySelector(`.popup__form_type_card`);
+export const popupFormProfile = document.querySelector(
+  `.popup__form_type_profile`
+);
+export const popupFormCard = document.querySelector(`.popup__form_type_card`);
 
 //
 
-const cardsContainer = document.querySelector(`.elements`);
+export const cardsContainer = document.querySelector(`.elements`);
 
-// Шаблон
+//
 
-const cardTemplate = document
-  .querySelector(`#card`)
-  .content.querySelector(`.element`);
+export const formProfile = document.querySelector(`.popup__form_type_profile`);
+export const formCard = document.querySelector(`.popup__form_type_card`);

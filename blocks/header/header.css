@@ -10,7 +10,6 @@
 @media (max-width: 425px) {
   .header {
     margin: 28px 0 42px;
-    margin-top: 28px;
     min-height: 56px;
   }
 }
