@@ -3,6 +3,7 @@ import FormValidator from "./FormValidator.js";
 import {
   initialCards,
   configValidation,
+  configCards,
   buttonEdit,
   popupProfile,
   buttonAdd,
@@ -24,7 +25,7 @@ import {
 // Добавление карточки
 
 const renderCard = (dataCard) => {
-  const card = new Card(dataCard);
+  const card = new Card(dataCard, openPopup, configCards);
   cardsContainer.prepend(card.getView());
 };
 
@@ -38,7 +39,7 @@ function handleCloseByEsc(event) {
 
 // Открытия и закрытия попапов
 
-export function openPopup(popup) {
+function openPopup(popup) {
   popup.classList.add(`popup_active`);
   document.addEventListener("keydown", handleCloseByEsc);
 }
@@ -46,10 +47,6 @@ export function openPopup(popup) {
 function closePopup(event) {
   event.classList.remove(`popup_active`);
   document.removeEventListener("keydown", handleCloseByEsc);
-
-  if (event.classList.contains("popup_type_card")) {
-    cardFormValidation.clearErrors();
-  }
 }
 
 // Подтверждения попапа профиля
@@ -74,6 +71,8 @@ function handleFormCardSubmit() {
 
 buttonAdd.addEventListener(`click`, () => {
   openPopup(popupCard);
+
+  cardFormValidation.clearErrors();
 });
 
 popups.forEach((enterPopup) => {

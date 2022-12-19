@@ -60,14 +60,25 @@ export const configValidation = {
   errorClass: "popup__input-error_active",
 };
 
+export const configCards = {
+  imageSelector: ".element__image",
+  titleSelector: ".element__title",
+  likeButtonSelector: ".element__like-button",
+  likeButtonActive: "element__like-button_active",
+  trashButtonSelector: ".element__trash-button",
+  templateSelector: "#card",
+  cardSelector: ".element",
+  popupImageSelector: ".popup_type_image",
+  popupImageTitle: ".popup__image-title",
+  popupImage: ".popup__image",
+};
+
 // Объявление переменных
 
 export const buttonEdit = document.querySelector(`.profile__edit-button`);
 export const popupProfile = document.querySelector(`.popup_type_profile`);
 export const buttonAdd = document.querySelector(`.profile__add-button`);
 export const popupCard = document.querySelector(`.popup_type_card`);
-
-export const popupImage = document.querySelector(`.popup_type_image`);
 
 // переменные для попапа профиля
 
