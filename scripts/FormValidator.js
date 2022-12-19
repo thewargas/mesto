@@ -62,12 +62,12 @@ class FormValidator {
   }
 
   clearErrors() {
-    const errors = this._form.querySelectorAll(this._errorClass);
+    const errors = this._form.querySelectorAll(`.${this._errorClass}`);
     errors.forEach((error) => {
       error.classList.remove(this._errorClass);
       error.textContent = "";
     });
-    const borders = this._form.querySelectorAll(this._inputErrorClass);
+    const borders = this._form.querySelectorAll(`.${this._inputErrorClass}`);
     borders.forEach((border) => {
       border.classList.remove(this._inputErrorClass);
     });
