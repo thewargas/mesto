@@ -62,14 +62,14 @@ class FormValidator {
   }
 
   clearErrors() {
-    const errors = this._form.querySelectorAll(".popup__input-error_active");
+    const errors = this._form.querySelectorAll(this._errorClass);
     errors.forEach((error) => {
-      error.classList.remove(`popup__input-error_active`);
+      error.classList.remove(this._errorClass);
       error.textContent = "";
     });
-    const borders = this._form.querySelectorAll(".popup__input_type_error");
+    const borders = this._form.querySelectorAll(this._inputErrorClass);
     borders.forEach((border) => {
-      border.classList.remove(`popup__input_type_error`);
+      border.classList.remove(this._inputErrorClass);
     });
 
     this._toggleButtonState(this._hasInvalidInput());
