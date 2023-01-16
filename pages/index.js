@@ -1,5 +1,5 @@
-import Card from "./Card.js";
-import FormValidator from "./FormValidator.js";
+import Card from "../components/Card.js";
+import FormValidator from "../components/FormValidator.js";
 import {
   initialCards,
   configValidation,
@@ -20,7 +20,7 @@ import {
   cardsContainer,
   formProfile,
   formCard,
-} from "./variables.js";
+} from "../utils/constants.js";
 
 // Добавление карточки
 
