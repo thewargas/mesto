@@ -1,5 +1,9 @@
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
+import Section from "../components/section.js";
+import PopupWithImage from "../components/PopupWithImage.js";
+import PopupWithForm from "../components/PopupWithForm.js";
+import UserInfo from "../components/UserInfo.js";
 import {
   initialCards,
   configValidation,
@@ -17,7 +21,6 @@ import {
   popups,
   popupFormProfile,
   popupFormCard,
-  cardsContainer,
   formProfile,
   formCard,
 } from "../utils/constants.js";
@@ -25,47 +28,27 @@ import {
 // Добавление карточки
 
 const renderCard = (dataCard) => {
-  const card = new Card(dataCard, openPopup, configCards);
-  cardsContainer.prepend(card.getView());
+  const card = new Card(dataCard, configCards, popupWithImage);
+  return card.getView();
 };
-
-// Событие нажатия кнопки ESC
-function handleCloseByEsc(event) {
-  const key = event.key;
-  if (key === "Escape") {
-    closePopup(document.querySelector(".popup_active"));
-  }
-}
-
-// Открытия и закрытия попапов
-
-function openPopup(popup) {
-  popup.classList.add(`popup_active`);
-  document.addEventListener("keydown", handleCloseByEsc);
-}
-
-function closePopup(event) {
-  event.classList.remove(`popup_active`);
-  document.removeEventListener("keydown", handleCloseByEsc);
-}
 
 // Подтверждения попапа профиля
 
-function handleFormProfileSubmit(evt) {
-  evt.preventDefault();
-  nameTitle.textContent = nameInput.value;
-  jobTitle.textContent = jobInput.value;
+// function handleFormProfileSubmit(evt) {
+//   evt.preventDefault();
+//   nameTitle.textContent = nameInput.value;
+//   jobTitle.textContent = jobInput.value;
 
-  closePopup(popupProfile);
-}
+//   closePopup(popupProfile);
+// }
 
-function handleFormCardSubmit() {
-  renderCard({ name: titleInput.value, link: urlInput.value });
+// function handleFormCardSubmit() {
+//   renderCard({ name: titleInput.value, link: urlInput.value });
 
-  popupFormCard.reset();
+//   popupFormCard.reset();
 
-  closePopup(popupCard);
-}
+//   closePopup(popupCard);
+// }
 
 // Вывешивание слушателей
 
@@ -75,44 +58,55 @@ buttonAdd.addEventListener(`click`, () => {
   cardFormValidation.clearErrors();
 });
 
-popups.forEach((enterPopup) => {
-  enterPopup.addEventListener(`click`, (event) => {
-    if (
-      event.target.classList.contains("popup_active") ||
-      event.target.classList.contains("popup__close-button-image")
-    ) {
-      closePopup(enterPopup);
-    }
-  });
-});
-
 buttonEdit.addEventListener(`click`, () => {
-  nameInput.value = nameTitle.textContent;
-  jobInput.value = jobTitle.textContent;
+  nameInput.value = profileInputs.getUserInfo().name.textContent;
+  jobInput.value = profileInputs.getUserInfo().job.textContent;
 
   profileFormValidation.clearErrors();
 
-  openPopup(popupProfile);
+  popupWithProfile.open();
 });
 
-popupFormProfile.addEventListener(`submit`, handleFormProfileSubmit);
+// popupFormProfile.addEventListener(`submit`, handleFormProfileSubmit);
 
-popupFormCard.addEventListener(`submit`, (evt) => {
-  evt.preventDefault();
-  handleFormCardSubmit();
-});
+// popupFormCard.addEventListener(`submit`, (evt) => {
+//   evt.preventDefault();
+//   handleFormCardSubmit();
+// });
 
 // Воспроизведение с загрузкой страницы.
 // Пересортировка массива в случайном порядке и уменьшение до 6 мест
 
+// Создание экземпляра попапа карточки и вывешивание слушателей
+const popupWithImage = new PopupWithImage(".popup_type_image");
+popupWithImage.setEventListeners();
+
+//
+const profileInputs = new UserInfo(".profile__title", ".profile__subtitle");
+
+//
+const popupWithProfile = new PopupWithForm(".popup_type_profile", (evt) => {
+  profileInputs.setUserInfo(evt);
+  popupWithProfile.close();
+});
+popupWithProfile.setEventListeners();
+
 let initialSortedCards = initialCards.sort(() => 0.5 - Math.random());
 initialSortedCards = initialSortedCards.slice(0, 6);
 
-// Рендер для всех карточек
+// Рендер карточек
+const cardRenderer = new Section(
+  {
+    items: initialSortedCards,
+    renderer: (dataCard) => {
+      cardRenderer.addItem(renderCard(dataCard));
+    },
+  },
+  ".elements"
+);
 
-initialSortedCards.forEach((dataCard) => {
-  renderCard(dataCard);
-});
+// Рендер для начальных карточек
+cardRenderer.renderItems();
 
 // Включение валидации для формы профиля
 const profileFormValidation = new FormValidator(configValidation, formProfile);

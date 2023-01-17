@@ -1,9 +1,7 @@
-class Card {
-  constructor(dataCard, openPopup, configCards) {
+export default class Card {
+  constructor(dataCard, configCards, popupWithImage) {
     this._name = dataCard.name;
     this._link = dataCard.link;
-
-    this._openPopup = openPopup;
 
     this._imageSelector = configCards.imageSelector;
     this._titleSelector = configCards.titleSelector;
@@ -12,10 +10,8 @@ class Card {
     this._trashButtonSelector = configCards.trashButtonSelector;
     this._templateSelector = configCards.templateSelector;
     this._cardSelector = configCards.cardSelector;
-    this._popupImageSelector = configCards.popupImageSelector;
 
-    this._popupImageTitle = configCards.popupImageTitle;
-    this._popupImage = configCards.popupImage;
+    this._popupWithImage = popupWithImage;
   }
 
   _getTemplateCard() {
@@ -33,19 +29,6 @@ class Card {
     this._newCard = null;
   }
 
-  _handleOpenCard() {
-    // Переменные для попапа карточки
-    const titleOutput = document.querySelector(this._popupImageTitle);
-    const urlOutput = document.querySelector(this._popupImage);
-
-    titleOutput.textContent = this._name;
-
-    urlOutput.src = this._link;
-    urlOutput.alt = `Место: ` + this._name;
-
-    this._openPopup(document.querySelector(this._popupImageSelector));
-  }
-
   // Событие переключения лайка
   _handleSwitchLike = () => {
     this._newCard
@@ -59,7 +42,12 @@ class Card {
     likeButton.addEventListener(`click`, () => this._handleSwitchLike());
 
     const cardImage = this._newCard.querySelector(this._imageSelector);
-    cardImage.addEventListener(`click`, () => this._handleOpenCard());
+    cardImage.addEventListener(`click`, () => {
+      this._popupWithImage.open({
+        link: this._link,
+        name: this._name,
+      });
+    });
 
     const trashButton = this._newCard.querySelector(this._trashButtonSelector);
     trashButton.addEventListener(`click`, () => this._handleDeleteCard());
@@ -84,5 +72,3 @@ class Card {
     return this._newCard;
   }
 }
-
-export default Card;

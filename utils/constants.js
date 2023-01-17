@@ -68,9 +68,6 @@ export const configCards = {
   trashButtonSelector: ".element__trash-button",
   templateSelector: "#card",
   cardSelector: ".element",
-  popupImageSelector: ".popup_type_image",
-  popupImageTitle: ".popup__image-title",
-  popupImage: ".popup__image",
 };
 
 // Объявление переменных
