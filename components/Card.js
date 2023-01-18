@@ -1,5 +1,5 @@
 export default class Card {
-  constructor(dataCard, configCards, popupWithImage) {
+  constructor(dataCard, configCards, handleCardClick) {
     this._name = dataCard.name;
     this._link = dataCard.link;
 
@@ -11,7 +11,7 @@ export default class Card {
     this._templateSelector = configCards.templateSelector;
     this._cardSelector = configCards.cardSelector;
 
-    this._popupWithImage = popupWithImage;
+    this._handleCardClick = handleCardClick;
   }
 
   _getTemplateCard() {
@@ -43,7 +43,7 @@ export default class Card {
 
     const cardImage = this._newCard.querySelector(this._imageSelector);
     cardImage.addEventListener(`click`, () => {
-      this._popupWithImage.open({
+      this._handleCardClick.open({
         link: this._link,
         name: this._name,
       });
