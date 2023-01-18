@@ -50,7 +50,6 @@ export const initialCards = [
 ];
 
 // Конфиг валидатора
-
 export const configValidation = {
   formSelector: ".popup__form",
   inputSelector: ".popup__input",
@@ -59,7 +58,6 @@ export const configValidation = {
   inputErrorClass: "popup__input_type_error",
   errorClass: "popup__input-error_active",
 };
-
 export const configCards = {
   imageSelector: ".element__image",
   titleSelector: ".element__title",
@@ -71,41 +69,16 @@ export const configCards = {
 };
 
 // Объявление переменных
-
 export const buttonEdit = document.querySelector(`.profile__edit-button`);
-export const popupProfile = document.querySelector(`.popup_type_profile`);
 export const buttonAdd = document.querySelector(`.profile__add-button`);
-export const popupCard = document.querySelector(`.popup_type_card`);
 
 // переменные для попапа профиля
-
 export const nameInput = document.querySelector(`.popup__input_type_name`);
 export const jobInput = document.querySelector(`.popup__input_type_job`);
 
-export const nameTitle = document.querySelector(`.profile__title`);
-export const jobTitle = document.querySelector(`.profile__subtitle`);
-
-// переменные для попапа создания карточек
-
-export const titleInput = document.querySelector(`.popup__input_type_title`);
-export const urlInput = document.querySelector(`.popup__input_type_url`);
-
-// Общая переменная попапов
-
-export const popups = document.querySelectorAll(`.popup`);
-
-//
-
-export const popupFormProfile = document.querySelector(
-  `.popup__form_type_profile`
-);
-export const popupFormCard = document.querySelector(`.popup__form_type_card`);
-
-//
-
+// переменая контейнера карточек
 export const cardsContainer = document.querySelector(`.elements`);
 
-//
-
+// переменные формы попапов
 export const formProfile = document.querySelector(`.popup__form_type_profile`);
 export const formCard = document.querySelector(`.popup__form_type_card`);

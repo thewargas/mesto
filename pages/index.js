@@ -9,55 +9,24 @@ import {
   configValidation,
   configCards,
   buttonEdit,
-  popupProfile,
   buttonAdd,
-  popupCard,
   nameInput,
   jobInput,
-  nameTitle,
-  jobTitle,
-  titleInput,
-  urlInput,
-  popups,
-  popupFormProfile,
-  popupFormCard,
   formProfile,
   formCard,
 } from "../utils/constants.js";
 
 // Добавление карточки
-
 const renderCard = (dataCard) => {
   const card = new Card(dataCard, configCards, popupWithImage);
   return card.getView();
 };
 
-// Подтверждения попапа профиля
-
-// function handleFormProfileSubmit(evt) {
-//   evt.preventDefault();
-//   nameTitle.textContent = nameInput.value;
-//   jobTitle.textContent = jobInput.value;
-
-//   closePopup(popupProfile);
-// }
-
-// function handleFormCardSubmit() {
-//   renderCard({ name: titleInput.value, link: urlInput.value });
-
-//   popupFormCard.reset();
-
-//   closePopup(popupCard);
-// }
-
 // Вывешивание слушателей
-
 buttonAdd.addEventListener(`click`, () => {
-  openPopup(popupCard);
-
   cardFormValidation.clearErrors();
+  popupWithCard.open();
 });
-
 buttonEdit.addEventListener(`click`, () => {
   nameInput.value = profileInputs.getUserInfo().name.textContent;
   jobInput.value = profileInputs.getUserInfo().job.textContent;
@@ -67,30 +36,29 @@ buttonEdit.addEventListener(`click`, () => {
   popupWithProfile.open();
 });
 
-// popupFormProfile.addEventListener(`submit`, handleFormProfileSubmit);
-
-// popupFormCard.addEventListener(`submit`, (evt) => {
-//   evt.preventDefault();
-//   handleFormCardSubmit();
-// });
-
-// Воспроизведение с загрузкой страницы.
-// Пересортировка массива в случайном порядке и уменьшение до 6 мест
-
+// Воспроизведение с загрузкой страницы
 // Создание экземпляра попапа карточки и вывешивание слушателей
 const popupWithImage = new PopupWithImage(".popup_type_image");
 popupWithImage.setEventListeners();
 
-//
+// Создание экземпляра управления отображением информации о пользователе на странице
 const profileInputs = new UserInfo(".profile__title", ".profile__subtitle");
 
-//
+// Создание экземпляра попапа профиля и вывешивание слушателей
 const popupWithProfile = new PopupWithForm(".popup_type_profile", (evt) => {
   profileInputs.setUserInfo(evt);
   popupWithProfile.close();
 });
 popupWithProfile.setEventListeners();
 
+// Создание экземпляра попапа создания карточки и вывешивание слушателей
+const popupWithCard = new PopupWithForm(".popup_type_card", (evt) => {
+  cardRenderer.addItem(renderCard({ name: evt.title, link: evt.url }));
+  popupWithCard.close();
+});
+popupWithCard.setEventListeners();
+
+// Пересортировка массива в случайном порядке и уменьшение до 6 мест
 let initialSortedCards = initialCards.sort(() => 0.5 - Math.random());
 initialSortedCards = initialSortedCards.slice(0, 6);
 
