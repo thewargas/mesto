@@ -24,6 +24,7 @@
 .element__like-container{align-items:center;align-self:center;display:flex;flex-direction:column;margin-right:20px}
 .element__like-button{align-self:center;background-image:url(images/like-button.87ed371465c7a6a1cd01.svg);height:19px;transition:opacity .3s linear,scale .3s linear;width:22px}.element__like-button:hover{opacity:.5;scale:1.4;width:22.2px}
 .element__like-counter{font-size:13px;font-weight:400;height:13px;line-height:16px;margin:3px 0 0;padding:0;text-align:center;width:10px}
+.element__like-counter_disabled{display:none}
 .element__like-button_active{background-image:url(images/like-enabled.fe17a515669479b1e649.svg)}.element__like-button_active:hover{opacity:1}
 .element__trash-button{background-image:url(images/trash-button.823b0cf1b0b7e9cb7cad.svg);height:19px;position:absolute;right:20px;top:20px;transition:scale .3s linear,opacity .3s linear;width:18px}.element__trash-button:hover{opacity:.6;scale:1.3}
 .footer{align-self:flex-start;margin-bottom:60px}@media (max-width:880px){.footer{margin-bottom:36px;margin-left:19px}}
