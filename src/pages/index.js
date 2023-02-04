@@ -42,7 +42,7 @@ const renderCard = (dataCard) => {
               console.log(error);
             })
             .finally(() => {
-              popupWithCard.switchLoading(false);
+              popupWithDeleteCard.switchLoading(false);
               popupWithDeleteCard.close();
             });
         });
@@ -109,16 +109,6 @@ const profileInfo = new UserInfo(
   ".profile__subtitle",
   ".profile__avatar"
 );
-// Загрузка информации профиля
-api
-  .getInitialInfo()
-  .then((data) => {
-    profileInfo.setUserInfo(data);
-    profileInfo.setAvatar(data);
-  })
-  .catch((error) => {
-    console.log(error);
-  });
 
 // Создание экземпляра попапа профиля и вывешивание слушателей
 const popupWithProfile = new PopupWithForm(".popup_type_profile", (evt) => {
@@ -188,15 +178,18 @@ const cardRenderer = new Section(
   ".elements"
 );
 
-// Рендер для начальных карточек
-api
-  .getInitialCards()
-  .then((data) => {
-    cardRenderer.renderItems(data);
+// Рендер для начальных карточек и загрузка информации профиля
+Promise.all([api.getInitialInfo(), api.getInitialCards()])
+  .then(([userData, cardsData]) => {
+    profileInfo.setUserInfo(userData);
+    profileInfo.setAvatar(userData);
+    cardRenderer.renderItems(cardsData);
   })
   .catch((error) => {
     console.log(error);
   });
+// Спасибо за полезный ревью :)
+// Я хотел объеденить промисы, но подумал, что вдруг так не правильно будет, но теперь всё понял)
 
 // Включение валидации для формы изменения аватара
 const avatarFormValidation = new FormValidator(configValidation, formAvatar);
