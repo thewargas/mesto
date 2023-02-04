@@ -22,7 +22,6 @@ export const configCards = {
   likeButtonSelector: ".element__like-button",
   likeButtonActive: "element__like-button_active",
   likeCounterSelector: ".element__like-counter",
-  likeCounterDisabled: "element__like-counter_disabled",
   trashButtonSelector: ".element__trash-button",
   templateSelector: "#card",
   cardSelector: ".element",

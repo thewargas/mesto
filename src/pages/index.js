@@ -1,3 +1,4 @@
+// Спасибо за ревью :)
 import "../pages/index.css";
 
 import Card from "../components/Card.js";
@@ -28,9 +29,22 @@ const renderCard = (dataCard) => {
     {
       dataCard,
       configCards,
-      handleDeleteCard: (id) => {
-        api.deleteCard(id).catch((error) => {
-          console.log(error);
+      handleDeleteCard: (id, card) => {
+        popupWithDeleteCard.open(() => {
+          popupWithDeleteCard.switchLoading(true);
+          api
+            .deleteCard(id)
+            .then(() => {
+              card.remove();
+              card = null;
+            })
+            .catch((error) => {
+              console.log(error);
+            })
+            .finally(() => {
+              popupWithCard.switchLoading(false);
+              popupWithDeleteCard.close();
+            });
         });
       },
       handlePutLike: (id) => {
@@ -55,9 +69,10 @@ const renderCard = (dataCard) => {
             console.log(error);
           });
       },
+      handleCardClick: (data) => {
+        popupWithImage.open(data);
+      },
     },
-    popupWithImage,
-    popupWithDeleteCard,
     profileInfo
   );
   return card.getView();
@@ -94,7 +109,7 @@ const profileInfo = new UserInfo(
   ".profile__subtitle",
   ".profile__avatar"
 );
-//
+// Загрузка информации профиля
 api
   .getInitialInfo()
   .then((data) => {
@@ -166,7 +181,6 @@ popupWithDeleteCard.setEventListeners();
 // Рендер карточек
 const cardRenderer = new Section(
   {
-    items: api.getInitialCards(),
     renderer: (dataCard) => {
       cardRenderer.addItem(renderCard(dataCard));
     },
@@ -175,7 +189,14 @@ const cardRenderer = new Section(
 );
 
 // Рендер для начальных карточек
-cardRenderer.renderItems();
+api
+  .getInitialCards()
+  .then((data) => {
+    cardRenderer.renderItems(data);
+  })
+  .catch((error) => {
+    console.log(error);
+  });
 
 // Включение валидации для формы изменения аватара
 const avatarFormValidation = new FormValidator(configValidation, formAvatar);
