@@ -1,53 +1,11 @@
-export const initialCards = [
-  {
-    name: "Архыз",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
+// Конфиг api
+export const configApi = {
+  baseUrl: "https://mesto.nomoreparties.co/v1/cohort-58",
+  headers: {
+    authorization: "c9a28bcb-0219-422f-80d6-0648efb4bc5b",
+    "Content-Type": "application/json",
   },
-  {
-    name: "Челябинская область",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg",
-  },
-  {
-    name: "Иваново",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg",
-  },
-  {
-    name: "Камчатка",
-    link: "https://images.unsplash.com/photo-1535557142533-b5e1cc6e2a5d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1829&q=80",
-  },
-  {
-    name: "Холмогорский район",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg",
-  },
-  {
-    name: "Байкал",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
-  },
-  {
-    name: "Великий Новгород",
-    link: "https://images.unsplash.com/photo-1600253613497-8a39b8b4a5de?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=928&q=80",
-  },
-  {
-    name: "Москва",
-    link: "https://images.unsplash.com/photo-1520106212299-d99c443e4568?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
-  },
-  {
-    name: "Сибирь",
-    link: "https://images.unsplash.com/photo-1632895645316-cd5571fc692a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
-  },
-  {
-    name: "Эльбрус",
-    link: "https://images.unsplash.com/photo-1626518139514-65676cf25bac?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
-  },
-  {
-    name: "Санкт-Петербург",
-    link: "https://images.unsplash.com/photo-1555460285-763ba96917d2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
-  },
-  {
-    name: "Таганай",
-    link: "https://images.unsplash.com/photo-1504613879446-6b4f44cf11ab?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1752&q=80",
-  },
-];
+};
 
 // Конфиг валидатора
 export const configValidation = {
@@ -63,6 +21,8 @@ export const configCards = {
   titleSelector: ".element__title",
   likeButtonSelector: ".element__like-button",
   likeButtonActive: "element__like-button_active",
+  likeCounterSelector: ".element__like-counter",
+  likeCounterDisabled: "element__like-counter_disabled",
   trashButtonSelector: ".element__trash-button",
   templateSelector: "#card",
   cardSelector: ".element",
@@ -71,6 +31,7 @@ export const configCards = {
 // Объявление переменных
 export const buttonEdit = document.querySelector(`.profile__edit-button`);
 export const buttonAdd = document.querySelector(`.profile__add-button`);
+export const buttonAvatar = document.querySelector(`.profile__avatar-button`);
 
 // переменные для попапа профиля
 export const nameInput = document.querySelector(`.popup__input_type_name`);
@@ -82,3 +43,4 @@ export const cardsContainer = document.querySelector(`.elements`);
 // переменные формы попапов
 export const formProfile = document.querySelector(`.popup__form_type_profile`);
 export const formCard = document.querySelector(`.popup__form_type_card`);
+export const formAvatar = document.querySelector(`.popup__form_type_avatar`);

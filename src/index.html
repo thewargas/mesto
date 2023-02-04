@@ -25,15 +25,18 @@
     <main class="content">
       <section class="profile">
         <figure class="profile__container">
-          <img
-            class="profile__avatar"
-            src="./images/profile-avatar.png"
-            alt="Аватарка профиля пользователя"
-          />
+          <button class="button profile__avatar-button">
+            <img
+              class="profile__edit-button-image profile__edit-button-image_type_avatar"
+              src="./images/edit-button.svg"
+              alt="Кнопка изменить аватар"
+            />
+          </button>
+          <img class="profile__avatar" alt="Аватарка профиля пользователя" />
           <figcaption class="profile__info">
             <div class="profile__info-container">
-              <h1 class="profile__title">Жак-Ив Кусто</h1>
-              <p class="profile__subtitle">Исследователь океана</p>
+              <h1 class="profile__title"></h1>
+              <p class="profile__subtitle"></p>
             </div>
             <button type="button" class="button profile__edit-button">
               <img
@@ -57,6 +60,46 @@
     <footer class="footer">
       <p class="footer__copyright">© 2022 Mesto Russia</p>
     </footer>
+    <div class="popup popup_type_avatar">
+      <div class="popup__container">
+        <h2 class="popup__title">Обновить аватар</h2>
+        <form
+          class="popup__form popup__form_type_avatar"
+          action="#"
+          name="popup-form-avatar"
+          novalidate
+        >
+          <div class="popup__inputs">
+            <input
+              id="url-input"
+              class="popup__input popup__input_type_url"
+              type="url"
+              placeholder="Ссылка на аватар"
+              name="avatar"
+              required
+            />
+            <span class="popup__input-error url-input-error"></span>
+          </div>
+          <button
+            type="submit"
+            class="button popup__submit-button button_disabled"
+            disabled
+          >
+            Сохранить
+          </button>
+        </form>
+        <button
+          type="button"
+          class="button popup__close-button popup__close-button_type_card"
+        >
+          <img
+            class="popup__close-button-image"
+            src="./images/Close-Icon.svg"
+            alt="Кнопка крестик"
+          />
+        </button>
+      </div>
+    </div>
     <div class="popup popup_type_profile">
       <div class="popup__container">
         <h2 class="popup__title">Редактировать профиль</h2>
@@ -83,7 +126,7 @@
               class="popup__input popup__input_type_job"
               type="text"
               placeholder="Деятельность"
-              name="job"
+              name="about"
               minlength="2"
               maxlength="200"
               required
@@ -157,13 +200,27 @@
         </button>
       </div>
     </div>
+    <div class="popup popup_type_delete-card">
+      <div class="popup__container">
+        <h2 class="popup__title popup__title_type_delete-card">Вы уверены?</h2>
+        <form class="popup__form popup__form_type_delete-card">
+          <button type="submit" class="button popup__submit-button">Да</button>
+        </form>
+        <button
+          type="button"
+          class="button popup__close-button popup__close-button_type_card"
+        >
+          <img
+            class="popup__close-button-image"
+            src="./images/Close-Icon.svg"
+            alt="Кнопка крестик"
+          />
+        </button>
+      </div>
+    </div>
     <div class="popup popup_type_image">
       <figure class="popup__image-container">
-        <img
-          class="popup__image"
-          src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg"
-          alt="Архыз"
-        />
+        <img class="popup__image" />
         <figcaption>
           <h2 class="popup__image-title">Архыз</h2>
           <button
@@ -185,7 +242,13 @@
           <img class="element__image" />
           <figcaption class="element__info">
             <h2 class="element__title"></h2>
-            <button type="button" class="button element__like-button"></button>
+            <div class="element__like-container">
+              <button
+                type="button"
+                class="button element__like-button"
+              ></button>
+              <p class="element__like-counter"></p>
+            </div>
             <button type="button" class="button element__trash-button"></button>
           </figcaption>
         </figure>

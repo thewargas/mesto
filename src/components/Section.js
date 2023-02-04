@@ -10,8 +10,10 @@ export default class Section {
   }
 
   renderItems() {
-    this._initialCards.forEach((card) => {
-      this._renderer(card);
+    this._initialCards.then((data) => {
+      data.reverse().forEach((card) => {
+        this._renderer(card);
+      });
     });
   }
 }
